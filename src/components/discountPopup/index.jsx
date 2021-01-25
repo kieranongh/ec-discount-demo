@@ -18,7 +18,7 @@ const DiscountPopup = (props) => {
         <IconButton className="discount-popup__close-button" onClick={handleClose} aria-label="close">
           <CloseIcon />
         </IconButton>
-        <Typography className="discount-popup__title-text" color="primary">
+        <Typography className="discount-popup__title-text" color="primary" variant="h3">
           Daily Opportunities
         </Typography>
       </DialogTitle>
