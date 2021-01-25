@@ -8,14 +8,14 @@ import DiscountPopup from '../components/discountPopup'
 import './styles.scss'
 
 const Home = () => {
-  const [openDiscountModal, setOpenDiscountModal] = useState(false)
+  const [openDiscountPopup, setOpenDiscountPopup] = useState(false)
 
-  const handleOpenDiscountModal = () => {
-    setOpenDiscountModal(true)
+  const handleOpenDiscountPopup = () => {
+    setOpenDiscountPopup(true)
   };
 
-  const handleCloseDiscountModal = () => {
-    setOpenDiscountModal(false)
+  const handleCloseDiscountPopup = () => {
+    setOpenDiscountPopup(false)
   };
 
   return (
@@ -30,11 +30,11 @@ const Home = () => {
         <Button
           variant="contained"
           color="primary"
-          onClick={handleOpenDiscountModal}
+          onClick={handleOpenDiscountPopup}
         >
           Set Daily Opportunities
         </Button>
-        <DiscountPopup open={openDiscountModal} handleClose={handleCloseDiscountModal} />
+        <DiscountPopup open={openDiscountPopup} handleClose={handleCloseDiscountPopup} />
       </Grid>
     </Grid>
   )
