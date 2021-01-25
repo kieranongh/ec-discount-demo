@@ -1,10 +1,14 @@
-import './App.css'
+import React from 'react'
 
-function App() {
+import { ThemeProvider } from '@material-ui/core/styles'
+
+import theme from './config/theme'
+
+const App = () => {
   return (
-    <div className="App">
-      
-    </div>
+    <ThemeProvider theme={theme}>
+
+    </ThemeProvider>
   )
 }
 
