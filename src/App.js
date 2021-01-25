@@ -5,7 +5,7 @@ import { ThemeProvider } from '@material-ui/core/styles'
 import theme from './config/theme'
 import Home from './pages/home'
 
-import styles from './styles.scss'
+import './styles.scss'
 
 const App = () => {
   return (
