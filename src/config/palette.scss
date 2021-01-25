@@ -1,0 +1,17 @@
+$white: #f9f9f9;
+$black: #353535;
+
+$grey: #828282;
+$deepPink: #ff1644;
+
+$primary: $deepPink;
+
+:export {
+  white: $white;
+  black: $black;
+
+  grey: $grey;
+  deepPink: $deepPink;
+
+  primary: $primary;
+}
