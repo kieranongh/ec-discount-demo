@@ -13,7 +13,16 @@ import './styles.scss'
 const DiscountPopup = (props) => {
   const { open, handleClose } = props
   return (
-    <Dialog className="discount-popup" open={open} onClose={handleClose}>
+    <Dialog
+      className="discount-popup"
+      open={open}
+      onClose={handleClose}
+      PaperProps={{
+        variant: 'outlined',
+        elevation: 0,
+        square: true
+      }}
+    >
       <DialogTitle className="discount-popup__title" disableTypography>
         <IconButton className="discount-popup__close-button" onClick={handleClose} aria-label="close">
           <CloseIcon />
@@ -23,7 +32,7 @@ const DiscountPopup = (props) => {
         </Typography>
       </DialogTitle>
       <DialogContent>
-        <DialogContentText>
+        <DialogContentText className="discount-popup__description-text">
           Our AI model has identified the following opportunities for your venue today.
         </DialogContentText>
       </DialogContent>

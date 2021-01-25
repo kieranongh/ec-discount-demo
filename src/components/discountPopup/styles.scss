@@ -1,16 +1,39 @@
+@import "../../config/palette.scss";
+
 .discount-popup .MuiBackdrop-root {
-  background-color: white;
+  background-color: $white;
 }
 
-.discount-popup__title {
+.discount-popup .MuiPaper-root {
+  border: $grey solid 1px;
+  border-top-width: 10px;
+  border-bottom-width: 10px;
+  max-width: 520px;
+}
+
+.discount-popup .discount-popup__title {
   display: flex;
   flex-direction: column;
+  padding: 0 14px 24px;
 }
 
-.discount-popup__title-text {
+.discount-popup .discount-popup__title-text {
   align-self: center;
+  padding: 15px 0;
 }
 
-.discount-popup__close-button {
+.discount-popup .discount-popup__close-button {
   align-self: flex-end;
+  color: $black;
+  padding: 8px;
+  margin-right: -11px;
+  svg {
+    font-size: 1.8rem;
+  }
+}
+
+.discount-popup .discount-popup__description-text {
+  color: $black;
+  font-size: 1.2rem;
+  text-align: center;
 }
