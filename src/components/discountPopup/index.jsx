@@ -8,6 +8,8 @@ import IconButton from '@material-ui/core/IconButton'
 import CloseIcon from '@material-ui/icons/Close'
 import Typography from '@material-ui/core/Typography'
 
+import OpportunityList from '../opportunityList'
+
 import './styles.scss'
 
 const DiscountPopup = (props) => {
@@ -35,6 +37,7 @@ const DiscountPopup = (props) => {
         <DialogContentText className="discount-popup__description-text">
           Our AI model has identified the following opportunities for your venue today.
         </DialogContentText>
+        <OpportunityList />
       </DialogContent>
     </Dialog>
   )
