@@ -47,6 +47,11 @@ const theme = createMuiTheme({
         '@font-face': [gordita],
       },
     },
+    MuiButton: {
+      root: {
+        textTransform: 'none'
+      }
+    }
   },
 })
 
