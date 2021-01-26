@@ -4,11 +4,11 @@
   background-color: $white;
 }
 
-.discount-popup .MuiPaper-root {
+.discount-popup .discount-popup__container {
   border: $grey solid 1px;
   border-top-width: 10px;
   border-bottom-width: 10px;
-  max-width: 520px;
+  max-width: 620px;
 }
 
 .discount-popup .discount-popup__title {
@@ -20,6 +20,10 @@
 .discount-popup .discount-popup__title-text {
   align-self: center;
   padding: 15px 0;
+}
+
+.discount-popup .discount-popup__content {
+  padding: 8px 16px;
 }
 
 .discount-popup .discount-popup__close-button {
@@ -36,4 +40,5 @@
   color: $black;
   font-size: 1.2rem;
   text-align: center;
+  margin: 0 36px 24px;
 }

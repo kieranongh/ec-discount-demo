@@ -20,6 +20,7 @@ const DiscountPopup = (props) => {
       open={open}
       onClose={handleClose}
       PaperProps={{
+        className: 'discount-popup__container',
         variant: 'outlined',
         elevation: 0,
         square: true
@@ -33,7 +34,7 @@ const DiscountPopup = (props) => {
           Daily Opportunities
         </Typography>
       </DialogTitle>
-      <DialogContent>
+      <DialogContent className="discount-popup__content">
         <DialogContentText className="discount-popup__description-text">
           Our AI model has identified the following opportunities for your venue today.
         </DialogContentText>

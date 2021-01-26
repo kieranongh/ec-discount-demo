@@ -1,34 +1,35 @@
 import React from 'react'
 
-import { useQuery, gql } from '@apollo/client'
+import { useQuery } from '@apollo/client'
 
-import Grid from '@material-ui/core/Grid'
-import IconButton from '@material-ui/core/IconButton'
-import Typography from '@material-ui/core/Typography'
+import LinearProgress from '@material-ui/core/LinearProgress'
 
-// import './styles.scss'
+import { GET_OPPOS } from '../../api/discountOppos'
 
-const GET_OPPOS = gql`
-  query Query {
-    opposForToday(restId: "kieran") {
-      objectId created discount startTime endTime prediction
-    }
-  }
-`
+import OpportunityItem from '../opportunityItem'
+
 
 const OpportunityList = (props) => {
   const { loading, error, data } = useQuery(GET_OPPOS)
 
   if (loading) {
-    return <p>Loading...</p>
+    return <LinearProgress />
   }
   if (error || !data.opposForToday) {
     return <p>Error: {error}</p>
   }
-  return (
-    <div>
-      Number of Opportunities: {data.opposForToday.length}
-    </div>
+  return data.opposForToday.map(
+    ({ objectid, discount, startTime, endTime, prediction}, index) => (
+      <OpportunityItem
+        key={objectid}
+        index={index}
+        objectid={objectid}
+        discount={discount}
+        startTime={startTime}
+        endTime={endTime}
+        prediction={prediction}
+      />
+    )
   )
 }
 

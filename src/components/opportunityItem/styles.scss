@@ -1,0 +1,28 @@
+@import "../../config/palette.scss";
+
+.opp-item {
+  margin: 12px 0;
+}
+
+.opp-item .opp-item__cell {
+  margin: 8px;
+  height: 110px;
+}
+
+.opp-item .opp-item__detail-box {
+  padding: 12px;
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  & > * {
+    margin-top: 5px;
+  }
+}
+
+.opp-item .opp-item__post-button {
+  padding: 6px 32px;
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
