@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client'
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
 import { ThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 
