@@ -4,6 +4,8 @@ import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
+import ExpandLessIcon from '@material-ui/icons/ExpandLess'
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
 import './styles.scss'
 
@@ -30,6 +32,25 @@ const OpportunityItem = ({ objectid, index, discount, startTime, endTime, predic
               {discount}
             </Typography>
           </Paper>
+        </Grid>
+        <Grid item>
+          <Grid
+            className="opp-item__cell opp-item__inc-button-container"
+            container
+            direction="column"
+            justify="space-between"
+          >
+            <Grid item>
+              <Button className="opp-item__inc-button" variant="contained">
+                <ExpandLessIcon />
+              </Button>
+            </Grid>
+            <Grid item>
+              <Button className="opp-item__inc-button" variant="contained">
+                <ExpandMoreIcon />
+              </Button>
+            </Grid>
+          </Grid>
         </Grid>
         <Grid item>
           <Paper className="opp-item__cell opp-item__detail-box">
