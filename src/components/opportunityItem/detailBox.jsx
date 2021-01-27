@@ -6,11 +6,15 @@ import Typography from '@material-ui/core/Typography'
 import './styles.scss'
 
 const DetailBox = (props) => {
-  const { title, content } = props
+  const { title, content, contentProps, className } = props
   return (
-    <Paper className="detail-box">
+    <Paper className={`opp-item__cell opp-item__detail-box ${className}`} elevation={3}>
+      <Typography component="p" variant="subtitle2">
       {title}
-      {content}
+      </Typography>
+      <Typography component="p" variant="h6" {...contentProps}>
+        {content}
+      </Typography>
     </Paper>
   )
 }

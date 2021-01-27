@@ -1,11 +1,12 @@
 import React, { useMemo } from 'react'
 
 import Grid from '@material-ui/core/Grid'
-import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import ExpandLessIcon from '@material-ui/icons/ExpandLess'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+
+import DetailBox from './detailBox'
 
 import './styles.scss'
 
@@ -24,14 +25,15 @@ const OpportunityItem = ({ objectid, index, discount, startTime, endTime, predic
       </Grid>
       <Grid container item direction="row" spacing={1}>
         <Grid item>
-          <Paper className="opp-item__cell opp-item__detail-box" elevation={3}>
-            <Typography component="p" variant="subtitle2">
-              Deal
-            </Typography>
-            <Typography component="p" variant="h4" color="primary">
-              {discount}
-            </Typography>
-          </Paper>
+          <DetailBox
+            title="Deal"
+            content={discount}
+            className="opp-item__deal"
+            contentProps={{
+              variant: 'h4',
+              color: 'primary'
+            }}
+          />
         </Grid>
         <Grid item>
           <Grid
@@ -53,24 +55,18 @@ const OpportunityItem = ({ objectid, index, discount, startTime, endTime, predic
           </Grid>
         </Grid>
         <Grid item>
-          <Paper className="opp-item__cell opp-item__detail-box">
-            <Typography component="p" variant="subtitle2">
-              Time
-            </Typography>
-            <Typography component="p" variant="h6">
-              {timeRange}
-            </Typography>
-          </Paper>
+          <DetailBox
+            title="Time"
+            content={timeRange}
+            className="opp-item__time"
+          />
         </Grid>
         <Grid item>
-          <Paper className="opp-item__cell opp-item__detail-box">
-            <Typography component="p" variant="subtitle2">
-              Expected <br /> Customers
-            </Typography>
-            <Typography component="p" variant="h6">
-              {prediction}
-            </Typography>
-          </Paper>
+          <DetailBox
+            title={<>Expected <br /> Customers</>}
+            content={prediction}
+            className="opp-item__expected"
+          />
         </Grid>
         <Grid item>
           <Button className="opp-item__cell opp-item__post-button" variant="contained" color="primary">
