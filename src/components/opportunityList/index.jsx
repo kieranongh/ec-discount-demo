@@ -4,7 +4,7 @@ import { useQuery, useMutation } from '@apollo/client'
 import LinearProgress from '@material-ui/core/LinearProgress'
 
 import { GET_OPPOS, POST_OPPO } from '../../api/discountOppos'
-import { displayTime } from '../../util/dateFormat'
+import { displayTime, getDiscountValue } from '../../util'
 
 import OpportunityItem from '../opportunityItem'
 
@@ -26,6 +26,7 @@ const OpportunityList = (props) => {
     return <p>Error: {error}</p>
   }
 
+
   const onPostOppo = (oppoId) => () => {
     setSelectedOppo(oppoId)
     return postOppo({ variables: { oppoId } })
@@ -37,7 +38,7 @@ const OpportunityList = (props) => {
         key={objectId}
         index={index}
         objectId={objectId}
-        discount={discount}
+        initialDiscount={getDiscountValue(discount)}
         startTime={displayTime(startTime)}
         endTime={displayTime(endTime)}
         prediction={prediction}

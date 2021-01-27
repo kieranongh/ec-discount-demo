@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useState, useMemo } from 'react'
 
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
@@ -11,10 +11,14 @@ import DetailBox from './detailBox'
 
 import './styles.scss'
 
+const MAX_DISCOUNT = 50
+const MIN_DISCOUNT = 10
+const DISCOUNT_DELTA = 5
+
 const OpportunityItem = ({ 
   objectId,
   index,
-  discount,
+  initialDiscount,
   startTime,
   endTime,
   prediction,
@@ -24,9 +28,27 @@ const OpportunityItem = ({
   const timeRange = useMemo(() => {
     return `${startTime} - ${endTime}`
   }, [startTime, endTime])
+  // Check discount is a number, else use 10 
+  const [discount, setDiscount] = useState(isNaN(initialDiscount) ? MIN_DISCOUNT : initialDiscount)
+
+  const incrementDiscount = () => {
+    if (discount >= MAX_DISCOUNT) {
+      setDiscount(MAX_DISCOUNT)
+    } else {
+      setDiscount(discount + DISCOUNT_DELTA)
+    }
+  }
+
+  const decrementDiscount = () => {
+    if (discount <= MIN_DISCOUNT) {
+      setDiscount(MIN_DISCOUNT)
+    } else {
+      setDiscount(discount - DISCOUNT_DELTA)
+    }
+  }
 
   return (
-    <Grid className="opp-item" container direction="row" spacing={1}>
+    <Grid className="opp-item" container direction="row" spacing={0}>
       <Grid item>
         <Typography variant="h6">
           Opportunity {index + 1}
@@ -36,7 +58,7 @@ const OpportunityItem = ({
         <Grid item>
           <DetailBox
             title="Deal"
-            content={discount}
+            content={`${discount}%`}
             className="opp-item__deal"
             contentProps={{
               variant: 'h4',
@@ -53,12 +75,12 @@ const OpportunityItem = ({
             spacing={0}
           >
             <Grid item>
-              <Button className="opp-item__inc-button" variant="contained">
+              <Button className="opp-item__inc-button" variant="contained" onClick={incrementDiscount}>
                 <ExpandLessIcon />
               </Button>
             </Grid>
             <Grid item>
-              <Button className="opp-item__inc-button" variant="contained">
+              <Button className="opp-item__inc-button" variant="contained" onClick={decrementDiscount}>
                 <ExpandMoreIcon />
               </Button>
             </Grid>
