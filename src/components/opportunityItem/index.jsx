@@ -1,16 +1,25 @@
 import React, { useMemo } from 'react'
+import { useMutation } from '@apollo/client'
 
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
+import CircularProgress from '@material-ui/core/CircularProgress'
 import ExpandLessIcon from '@material-ui/icons/ExpandLess'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+
+import { POST_OPPO } from '../../api/discountOppos'
 
 import DetailBox from './detailBox'
 
 import './styles.scss'
 
-const OpportunityItem = ({ objectid, index, discount, startTime, endTime, prediction }) => {
+const OpportunityItem = ({ objectId, index, discount, startTime, endTime, prediction }) => {
+  const [postOppoAPI, { loading }] = useMutation(POST_OPPO, { onError: console.log })
+
+  const postOppo = (oppoId) => () => {
+    return postOppoAPI({ variables: { oppoId } })
+  }
   
   const timeRange = useMemo(() => {
     return `${startTime} - ${endTime}`
@@ -69,8 +78,18 @@ const OpportunityItem = ({ objectid, index, discount, startTime, endTime, predic
           />
         </Grid>
         <Grid item>
-          <Button className="opp-item__cell opp-item__post-button" variant="contained" color="primary">
-            Post <br /> Now
+          <Button
+            className="opp-item__cell opp-item__post-button"
+            variant="contained"
+            color="primary"
+            onClick={postOppo(objectId)}
+          >
+            {!loading && (
+              <>Post <br /> Now</>
+            )}
+            {loading && (
+              <CircularProgress />
+            )}
           </Button> 
         </Grid>
       </Grid>
