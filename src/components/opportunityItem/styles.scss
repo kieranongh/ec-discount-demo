@@ -1,7 +1,7 @@
 @import "../../config/palette.scss";
 
 .opp-item {
-  margin: 12px 0;
+  margin: 24px 0;
 }
 
 .opp-item .opp-item__cell {
@@ -16,16 +16,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
+  
   & > * {
     margin-top: 5px;
   }
-}
-
-.opp-item .opp-item__post-button {
-  padding: 6px 32px;
-  font-size: 1.2rem;
-  line-height: 1.2;
 }
 
 .opp-item .opp-item__inc-button-container {
@@ -43,4 +37,18 @@
   svg {
     font-size: 2.7rem;
   }
+}
+
+.opp-item .opp-item__time {
+  width: 160px;
+}
+
+.opp-item .opp-item__expected {
+  width: 130px;
+}
+
+.opp-item .opp-item__post-button {
+  padding: 6px 32px;
+  font-size: 1.2rem;
+  line-height: 1.2;
 }
