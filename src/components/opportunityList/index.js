@@ -1,16 +1,22 @@
-import React from 'react'
-
-import { useQuery } from '@apollo/client'
+import React, { useState } from 'react'
+import { useQuery, useMutation } from '@apollo/client'
 
 import LinearProgress from '@material-ui/core/LinearProgress'
 
-import { GET_OPPOS } from '../../api/discountOppos'
+import { GET_OPPOS, POST_OPPO } from '../../api/discountOppos'
 
 import OpportunityItem from '../opportunityItem'
 
-
 const OpportunityList = (props) => {
   const { loading, error, data } = useQuery(GET_OPPOS)
+  const [postOppo, { loading: postOppoLoading }] = useMutation(
+    POST_OPPO, 
+    {
+      onError: () => {}, // do not show error
+      onCompleted: () => { setSelectedOppo(null) }
+    }
+  )
+  const [selectedOppo, setSelectedOppo] = useState(null)
 
   if (loading) {
     return <LinearProgress />
@@ -18,16 +24,24 @@ const OpportunityList = (props) => {
   if (error || !data.opposForToday) {
     return <p>Error: {error}</p>
   }
+
+  const onPostOppo = (oppoId) => () => {
+    setSelectedOppo(oppoId)
+    return postOppo({ variables: { oppoId } })
+  }
+
   return data.opposForToday.map(
-    ({ objectid, discount, startTime, endTime, prediction}, index) => (
+    ({ objectId, discount, startTime, endTime, prediction}, index) => (
       <OpportunityItem
-        key={objectid}
+        key={objectId}
         index={index}
-        objectid={objectid}
+        objectId={objectId}
         discount={discount}
         startTime={startTime}
         endTime={endTime}
         prediction={prediction}
+        onPostOppo={onPostOppo}
+        loading={objectId === selectedOppo && postOppoLoading}
       />
     )
   )

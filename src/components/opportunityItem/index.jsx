@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react'
-import { useMutation } from '@apollo/client'
 
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
@@ -8,26 +7,27 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 import ExpandLessIcon from '@material-ui/icons/ExpandLess'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
-import { POST_OPPO } from '../../api/discountOppos'
-
 import DetailBox from './detailBox'
 
 import './styles.scss'
 
-const OpportunityItem = ({ objectId, index, discount, startTime, endTime, prediction }) => {
-  const [postOppoAPI, { loading }] = useMutation(POST_OPPO, { onError: console.log })
-
-  const postOppo = (oppoId) => () => {
-    return postOppoAPI({ variables: { oppoId } })
-  }
-  
+const OpportunityItem = ({ 
+  objectId,
+  index,
+  discount,
+  startTime,
+  endTime,
+  prediction,
+  onPostOppo,
+  loading
+ }) => {  
   const timeRange = useMemo(() => {
     return `${startTime} - ${endTime}`
   }, [startTime, endTime])
 
   return (
-    <Grid className="opp-item" container direction="row">
-      <Grid item spacing={1}>
+    <Grid className="opp-item" container direction="row" spacing={1}>
+      <Grid item>
         <Typography variant="h6">
           Opportunity {index + 1}
         </Typography>
@@ -50,6 +50,7 @@ const OpportunityItem = ({ objectId, index, discount, startTime, endTime, predic
             container
             direction="column"
             justify="space-between"
+            spacing={0}
           >
             <Grid item>
               <Button className="opp-item__inc-button" variant="contained">
@@ -82,7 +83,7 @@ const OpportunityItem = ({ objectId, index, discount, startTime, endTime, predic
             className="opp-item__cell opp-item__post-button"
             variant="contained"
             color="primary"
-            onClick={postOppo(objectId)}
+            onClick={onPostOppo(objectId)}
           >
             {!loading && (
               <>Post <br /> Now</>
