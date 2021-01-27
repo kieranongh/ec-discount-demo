@@ -1,4 +1,43 @@
-# Getting Started with Create React App
+# Discount Posting Demo
+
+This is a UI coding challenge that pulls data from a GraphQL endpoint, displays it in a popup and allows for simple editing before posting.
+
+Below are some instructions for installing and running the application, as well as some ToDos if more time/complexity were required
+
+## Installation
+
+1. Checkout this repository
+```bash
+git clone https://github.com/kieranongh/ec-discount-demo
+```
+
+2. Navigate to directory
+```bash
+cd ec-discount-demo
+```
+
+3. Install node depencies
+```bash
+npm install
+```
+
+## ToDos
+
+A few aspects I would look at next if building out this application more:
+
+### Eject from Create React App (CRA).
+CRA does a lot of boiler plate and set up for you when creating an application. It also keeps dependencies to a minimum, making a good case to avoid ejecting (More detail on Ejecting further on, from CRA).
+
+However, ejecting would allow certain Webpack and ESLint changes, crucial in a larger application: 
+- Using aliases for modules. Ie. replace `../../components/MyComponent` with `components/MyComponent`
+- Import Sass variables into the Material UI theme, for one source of truth
+- Customise ESLint config to be stricter, more opinionated for a cleaner, more consistent codebase
+
+### Collate constants into a directory
+Using constants instead of magic numbers reduces errors but even better than that is using one source of truth for constants - enter, the `constants` directory!
+
+### Tests and CI/CD Pipeline
+Cos that's what gives you confidence to push, great tests written to break when the application doesn't work and pass for cosmetic, irrelevant changes (ie. avoid using snapshots)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -38,33 +77,3 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
